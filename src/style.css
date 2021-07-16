@@ -1,0 +1,146 @@
+body {
+  background: linear-gradient(
+    76.5deg,
+    rgb(129, 252, 255) 0.4%,
+    rgb(255, 175, 207) 49.8%,
+    rgb(255, 208, 153) 98.6%
+  );
+
+  margin: 40px 20px;
+  min-height: 100%;
+}
+
+header {
+  font-family: Helvetica, sans-serif;
+  text-align: center;
+  font-size: 45px;
+  font-weight: bold;
+  margin: 20px;
+}
+
+.card-title {
+  color: #6dabbd;
+  font-size: 40px;
+}
+
+.ConcurrentDay {
+  font-size: 25px;
+}
+
+.LocalTime {
+  font-size: 30px;
+}
+
+#temp-concurrent {
+  text-align: center;
+  font-size: 15px;
+}
+
+#clock-icon {
+  display: block;
+  width: 10px;
+}
+
+h2 {
+  text-align: center;
+  color: #fe677c;
+}
+
+h3 {
+  text-align: center;
+}
+
+footer {
+  font-size: 14px;
+  text-align: center;
+  color: white;
+}
+
+.container {
+  background: linear-gradient(rgb(254, 102, 125), rgb(255, 163, 117));
+  box-shadow: 0 2px 20px rgb(0 0 0 / 10%);
+  margin: 0px auto;
+  max-width: 90%;
+  padding: 30px 60px;
+}
+
+.card-img-up {
+  display: block;
+  margin: auto;
+  width: 70px;
+}
+
+.card-img-down {
+  display: block;
+  margin: auto;
+  width: 50px;
+}
+
+.forecast-days {
+  text-align: center;
+}
+
+.forecast {
+  padding: 40px 20px;
+  margin: 10px auto;
+}
+
+.card-city {
+  background: white;
+  padding: 0 0 150px 0;
+}
+
+#temp-concurrent {
+  text-align: center;
+  font-size: 40px;
+}
+.card-temperature {
+  text-align: center;
+  font-size: 40px;
+  background: white;
+  padding: 0 0 118px 0;
+}
+
+#celsius,
+#fahrenheit {
+  text-decoration: none;
+}
+
+.searcher {
+  margin: 40px 0px;
+}
+
+.button {
+  color: black;
+  background-color: white;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 2px 20px rgb(0 0 0 / 10%);
+  font-weight: bolder;
+  padding: 6px 25px;
+  transition: all 500ms ease;
+}
+
+.button:hover {
+  color: white;
+  cursor: pointer;
+  background-color: rgba(207, 224, 238, 0.979);
+}
+
+.button-Location {
+  color: white;
+  background-color: rgb(4, 138, 247);
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 2px 20px rgb(0 0 0 / 10%);
+  font-weight: bolder;
+  padding: 6px 25px;
+  transition: all 500ms ease;
+  margin-left: 10px;
+}
+
+.button-Location:hover {
+  color: white;
+  cursor: pointer;
+  background-color: rgb(46, 175, 158);
+}
