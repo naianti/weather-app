@@ -35,15 +35,20 @@ function showDefaulCity(response) {
   let feelingElement = document.querySelector("#feeling");
   let clockElement = document.querySelector("#clock");
   let dayWeekElement = document.querySelector("#concurrent-day");
+  let mainIconElement = document.querySelector("#main-icon");
   defaultCity.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
   tempElement.innerHTML = Math.round(response.data.main.temp);
   descriptionElement.innerHTML = response.data.weather[0].description;
   feelingElement.innerHTML = Math.floor(response.data.main.feels_like);
   clockElement.innerHTML = formatTime(response.data.dt * 1000);
   dayWeekElement.innerHTML = formatDay(response.data.dt * 1000);
+  mainIconElement.setAttribute(
+    "src",
+    `images/${response.data.weather[0].icon}.png`
+  );
 }
 
-let defaultCity = "Caracas, VE";
+let defaultCity = "california";
 let apiKey = "0c0f15195845da49d19b504381bfef7a";
 let units = "metric";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${defaultCity}&appid=${apiKey}&units=${units}`;
