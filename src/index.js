@@ -65,3 +65,37 @@ search("Caracas");
 
 let formSearcher = document.querySelector("form");
 formSearcher.addEventListener("submit", searchHandle);
+
+//geolocation
+function showLocalTemperature(response) {
+  let temperature = Math.round(response.data.main.temp);
+  let localCity = `${response.data.name}, ${response.data.sys.country}`;
+  let localWeatherDescription = `${response.data.weather[0].description}`;
+
+  let h1 = document.querySelector("h1");
+  let localTemperature = document.querySelector("#concurrent-temp");
+  let h3 = document.querySelector("h3");
+
+  localTemperature.innerHTML = `${temperature}`;
+  h1.innerHTML = `${localCity}`;
+  h3.innerHTML = `${localWeatherDescription}`;
+}
+
+function showLocation(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let units = "metric";
+  let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
+  let apiKey = "0c0f15195845da49d19b504381bfef7a";
+  let apiUrl = `${apiEndpoint}?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+
+  axios.get(apiUrl).then(showLocalTemperature);
+}
+
+function geolocationRequest(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(showLocation);
+}
+
+let localRequest = document.querySelector(".button-location");
+localRequest.addEventListener("click", geolocationRequest);
