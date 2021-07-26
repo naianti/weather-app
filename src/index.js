@@ -25,7 +25,6 @@ function formatTime(timestamp) {
   }
   return `${hours}:${minutes}`;
 }
-
 function showDefaulCity(response) {
   console.log(response.data);
 
@@ -48,9 +47,21 @@ function showDefaulCity(response) {
   );
 }
 
-let defaultCity = "california";
-let apiKey = "0c0f15195845da49d19b504381bfef7a";
-let units = "metric";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${defaultCity}&appid=${apiKey}&units=${units}`;
+function search(city) {
+  let apiKey = "0c0f15195845da49d19b504381bfef7a";
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
 
-axios.get(apiUrl).then(showDefaulCity);
+  axios.get(apiUrl).then(showDefaulCity);
+}
+
+function searchHandle(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#search-input");
+  search(searchInput.value);
+}
+
+search("Caracas");
+
+let formSearcher = document.querySelector("form");
+formSearcher.addEventListener("submit", searchHandle);
