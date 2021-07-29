@@ -64,11 +64,7 @@ img {
   cursor: pointer;
 }
 
-.card-forecast {
-  margin: 20px 0;
-  text-align: center;
-}
-
+.card-forecast,
 .card-forecast-temp {
   text-align: center;
 }
@@ -77,6 +73,9 @@ img {
 .card-forecast-temp,
 .card-forecast {
   background-color: rgba(255, 255, 255, 0.068);
+}
+.card-forecast {
+  margin-top: 20px;
 }
 
 .card-body:hover {
@@ -121,11 +120,6 @@ img {
 
 #clock {
   font-size: 26px;
-}
-
-#celsius,
-#fahrenheit {
-  text-decoration: none;
 }
 
 #main-icon {

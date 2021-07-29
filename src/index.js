@@ -13,6 +13,29 @@ function formatDay(timestamp) {
   return `${day}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["thu", "frid", "sat", "sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      ` <div class="col">
+    <div class="card-forecast">
+      <div class="card-body">
+        <h2>26º</h2>
+        <img src="images/emoji.png" alt="..." />
+        <h4>${day}</h4>
+      </div>
+    </div>
+  </div>;
+`;
+  });
+
+  forecastHTML = forecastHTML + ` </div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function formatTime(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -99,3 +122,5 @@ function geolocationRequest(event) {
 
 let localRequest = document.querySelector(".button-location");
 localRequest.addEventListener("click", geolocationRequest);
+
+displayForecast();
