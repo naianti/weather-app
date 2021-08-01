@@ -13,23 +13,36 @@ function formatDay(timestamp) {
   return `${day}`;
 }
 
-function displayForecast() {
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  console.log(response.data.daily);
+
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  let days = ["thu", "frid", "sat", "sun"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      ` <div class="col">
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        ` <div class="col">
     <div class="card-forecast">
       <div class="card-body">
-        <h2>26º</h2>
-        <img src="images/emoji.png" alt="..." />
-        <h4>${day}</h4>
+      <div class="forecastdays">${formatForecastDay(forecastDay.dt)}</div>
+        <img src="images/${forecastDay.weather[0].icon}.png" alt="..." />
+        <span class="temp-max">${Math.round(forecastDay.temp.max)} °C</span> 
+        <span class="temp-min">${Math.round(forecastDay.temp.min)} °C</span>
       </div>
     </div>
-  </div>;
-`;
+  </div>`;
+    }
   });
 
   forecastHTML = forecastHTML + ` </div>`;
@@ -48,9 +61,18 @@ function formatTime(timestamp) {
   }
   return `${hours}:${minutes}`;
 }
+
+function getForecast(coordinates) {
+  let units = "metric";
+  let apiEndpoint = "https://api.openweathermap.org/data/2.5/onecall?";
+  let apiKey = "0c0f15195845da49d19b504381bfef7a";
+  let apiUrl = `${apiEndpoint}lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
+
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function showDefaulCity(response) {
   console.log(response.data);
-
   let defaultCity = document.querySelector("#city-name");
   let tempElement = document.querySelector("#concurrent-temp");
   let descriptionElement = document.querySelector("h3");
@@ -68,6 +90,8 @@ function showDefaulCity(response) {
     "src",
     `images/${response.data.weather[0].icon}.png`
   );
+
+  getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -122,5 +146,3 @@ function geolocationRequest(event) {
 
 let localRequest = document.querySelector(".button-location");
 localRequest.addEventListener("click", geolocationRequest);
-
-displayForecast();
