@@ -22,9 +22,9 @@ function formatForecastDay(timestamp) {
 }
 
 function displayForecast(response) {
-  let forecast = response.data.daily;
   console.log(response.data.daily);
 
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
 
@@ -71,16 +71,15 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 
-function showDefaulCity(response) {
-  console.log(response.data);
-  let defaultCity = document.querySelector("#city-name");
+function showTempCity(response) {
+  let cityElement = document.querySelector("#city-name");
   let tempElement = document.querySelector("#concurrent-temp");
   let descriptionElement = document.querySelector("h3");
   let feelingElement = document.querySelector("#feeling");
   let clockElement = document.querySelector("#clock");
   let dayWeekElement = document.querySelector("#concurrent-day");
   let mainIconElement = document.querySelector("#main-icon");
-  defaultCity.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
+  cityElement.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
   tempElement.innerHTML = Math.round(response.data.main.temp);
   descriptionElement.innerHTML = response.data.weather[0].description;
   feelingElement.innerHTML = Math.floor(response.data.main.feels_like);
@@ -95,11 +94,13 @@ function showDefaulCity(response) {
 }
 
 function search(city) {
+  let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
+
   let apiKey = "0c0f15195845da49d19b504381bfef7a";
   let units = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  let apiUrl = `${apiEndpoint}?q=${city}&appid=${apiKey}&units=${units}`;
 
-  axios.get(apiUrl).then(showDefaulCity);
+  axios.get(apiUrl).then(showTempCity);
 }
 
 function searchHandle(event) {
@@ -113,20 +114,7 @@ search("Caracas");
 let formSearcher = document.querySelector("form");
 formSearcher.addEventListener("submit", searchHandle);
 
-//geolocation
-function showLocalTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
-  let localCity = `${response.data.name}, ${response.data.sys.country}`;
-  let localWeatherDescription = `${response.data.weather[0].description}`;
-
-  let h1 = document.querySelector("h1");
-  let localTemperature = document.querySelector("#concurrent-temp");
-  let h3 = document.querySelector("h3");
-
-  localTemperature.innerHTML = `${temperature}`;
-  h1.innerHTML = `${localCity}`;
-  h3.innerHTML = `${localWeatherDescription}`;
-}
+//Task geolocation
 
 function showLocation(position) {
   let latitude = position.coords.latitude;
@@ -136,7 +124,7 @@ function showLocation(position) {
   let apiKey = "0c0f15195845da49d19b504381bfef7a";
   let apiUrl = `${apiEndpoint}?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
 
-  axios.get(apiUrl).then(showLocalTemperature);
+  axios.get(apiUrl).then(showTempCity);
 }
 
 function geolocationRequest(event) {
