@@ -22,8 +22,6 @@ function formatForecastDay(timestamp) {
 }
 
 function displayForecast(response) {
-  console.log(response.data.daily);
-
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
@@ -55,11 +53,13 @@ function formatTime(timestamp) {
   if (hours < 10) {
     hours = `0${hours}`;
   }
+
   let minutes = date.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  return `${hours}:${minutes}`;
+
+  return `${hours}:${minutes} `;
 }
 
 function getForecast(coordinates) {
@@ -134,3 +134,15 @@ function geolocationRequest(event) {
 
 let localRequest = document.querySelector(".button-location");
 localRequest.addEventListener("click", geolocationRequest);
+
+//darkmode
+
+let darkMode = document.getElementById(`toggle`);
+let toogle = document.getElementById(`toggle`);
+toggle.onclick = function () {
+  toggle.classList.toggle(`active`);
+  darkMode.classList.toggle(`active`);
+};
+
+let backgroundDark = document.querySelector(`#videoback.active`);
+backgroundDark.innerHTML = `<video src="images/morning.mp4" autoplay loop muted></video>`;

@@ -5,6 +5,7 @@ footer {
 }
 
 body {
+  background: salmon;
   font-family: Helvetica, sans-serif;
 }
 
@@ -139,15 +140,46 @@ img {
 }
 
 #videoback {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
   z-index: -1;
 }
 
-#video {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
+#toggle {
+  cursor: pointer;
+  display: relative;
+  margin-top: 10px;
+  margin-left: 82%;
+  margin-bottom: 10px;
+  width: 90px;
+  height: 40px;
+  border-radius: 160px;
+  background: white;
+  transition: 0.5s;
+  box-shadow: inset 0 8px 60px rgba(255, 255, 255, 0.788),
+    inset 0 8px 8px rgba(255, 255, 255, 0.788),
+    inset 0 -4px 4px rgba(255, 255, 255, 0.788);
+}
+
+.indicator {
+  width: 40px;
+  height: 40px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: linear-gradient(
+    to bottom,
+    rgb(252, 246, 246),
+    rgb(223, 199, 199)
+  );
+  transform: scale(0.9);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.05),
+    inset 0 4px 4px rgba(155, 134, 134, 0.02),
+    inset 0 -4px 4px rgba(255, 255, 255, 0.02);
+  transition: 0.5s;
+}
+
+#toggle.active .indicator {
+  margin-left: 55%;
 }

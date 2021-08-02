@@ -17,7 +17,7 @@
 
   <body>
     <section id="videoback">
-      <video id="video" src="images/sky.mp4" autoplay loop muted></video>
+      <video src="images/sky.mp4" autoplay loop muted></video>
     </section>
 
     <div class="container">
@@ -48,7 +48,8 @@
             <div class="card-forecast-city">
               <div class="card-body">
                 <h1 id="city-name"></h1>
-                <h4>Today is <span id="concurrent-day"></span>!</h4>
+                <p>Latest Report:</p>
+                <span id="concurrent-day"></span>
                 <h5 id="clock"></h5>
               </div>
             </div>
@@ -72,6 +73,9 @@
           <a href="https://github.com/naianti/weather-app"> Open-source </a>
           Code by Nai Antillano
         </footer>
+      </div>
+      <div id="toggle">
+        <div class="indicator"></div>
       </div>
     </div>
     <script src="src/index.js"></script>
