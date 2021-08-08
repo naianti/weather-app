@@ -1,63 +1,50 @@
 footer {
-  font-size: 14px;
+  color: whitesmoke;
+  font-size: 13px;
+  margin-top: 25px;
   text-align: center;
-  color: white;
 }
 
-body {
-  background: salmon;
-  font-family: Helvetica, sans-serif;
-}
-
+h1,
 header {
-  font-size: 45px;
-  font-weight: bold;
+  color: black;
+  font-family: "Rubik", sans-serif;
+  font-size: 40px;
+  font-weight: 800px;
   margin: 20px;
   text-align: center;
-}
-
-.temp-max {
-  color: rgba(255, 255, 255, 0.863);
-  text-align: center;
-}
-
-.temp-min {
-  color: rgba(255, 255, 255, 0.678);
-  text-align: center;
-}
-
-h3 {
-  text-transform: capitalize;
-}
-
-.forecastdays {
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
-  text-align: center;
+  -webkit-text-stroke: 0.6px rgb(161, 157, 157);
 }
 
 img {
   display: block;
   margin: auto;
-  width: 40px;
+  width: 30px;
+}
+
+h1.active {
+  color: white;
+}
+
+body.active {
+  color: aliceblue;
 }
 
 .button {
+  color: black;
   background-color: white;
   border: none;
   border-radius: 50px;
   box-shadow: 0 2px 20px rgb(0 0 0 / 10%);
-  color: black;
   font-weight: bolder;
   padding: 6px 25px;
   transition: all 500ms ease;
 }
 
 .button:hover {
-  background-color: rgba(207, 224, 238, 0.979);
   color: white;
   cursor: pointer;
+  background-color: rgba(207, 224, 238, 0.979);
 }
 
 .button-location {
@@ -73,8 +60,8 @@ img {
 }
 
 .button-location:hover {
-  background-color: rgb(46, 175, 158);
   cursor: pointer;
+  background-color: #1d7d81;
 }
 
 .card-forecast,
@@ -85,8 +72,22 @@ img {
 .card-forecast-city,
 .card-forecast-temp,
 .card-forecast {
-  background-color: rgba(255, 255, 255, 0.068);
+  background-color: #e3f6f552;
 }
+
+.card-forecast-city img {
+  display: inline-flex;
+  width: 12px;
+}
+
+.card-forecast-city,
+.card-forecast-temp {
+  max-height: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  min-width: 100%;
+}
+
 .card-forecast {
   margin-top: 20px;
 }
@@ -104,82 +105,140 @@ img {
   transition: 0.7s;
 }
 
+.card-forecast-city.active,
+.card-forecast-temp.active,
+.card-forecast.active {
+  background-color: #0000002f;
+}
+
+.forecastdays {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.forecastdays,
+.temp-max,
+.temp-min {
+  text-align: center;
+  text-shadow: -2px 5px 6px rgba(5, 1, 5, 0.1);
+  font-weight: 600;
+}
+
+.indicator {
+  background: linear-gradient(
+    to bottom,
+    rgb(252, 246, 246),
+    rgb(223, 199, 199)
+  );
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.05),
+    inset 0 4px 4px rgba(155, 134, 134, 0.02),
+    inset 0 -4px 4px rgba(255, 255, 255, 0.02);
+
+  border-radius: 50%;
+  height: 40px;
+  transform: scale(0.9);
+  transition: 0.5s;
+  width: 40px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
+
 .searcher {
-  margin: 25px 0px;
+  margin: 20px 0px;
 }
 
 .weather-app {
-  background: rgba(21, 198, 204, 0.788);
-  box-shadow: 0 2px 20px rgb(0 0 0 / 10%);
+  background-color: #bae8e8be;
+  border-radius: 10px;
+  box-shadow: -1px 15px 19px rgba(0, 0, 0, 0.5);
   display: block;
   margin: auto;
   max-width: 80%;
   padding: 20px;
 }
 
-#city-name {
-  color: rgb(250, 255, 255);
-  font-size: 40px;
+.weather-app.active {
+  background-color: rgba(0, 0, 0, 0.144);
 }
 
-#concurrent-day {
-  font-size: 25px;
-  text-transform: lowercase;
+#celcius,
+#now-text {
+  font-size: 26px;
+  font-weight: bolder;
+}
+
+#city-name {
+  color: #1399f3;
+  font-size: 42px;
+}
+
+#concurrent-day,
+#clock {
+  font-size: 18px;
+  text-transform: capitalize;
 }
 
 #concurrent-temp {
-  font-size: 30px;
+  font-size: 38px;
+  font-weight: bolder;
 }
 
-#clock {
-  font-size: 26px;
+#city-name.active,
+#description.active {
+  color: #bae8e8;
 }
 
-#main-icon {
-  width: 60px;
-}
-
-#videoback {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
+#description {
+  color: #1399f3;
+  font-size: 24px;
+  font-weight: bolder;
+  text-transform: capitalize;
 }
 
 #toggle {
   cursor: pointer;
-  display: relative;
-  margin-top: 10px;
-  margin-left: 82%;
-  margin-bottom: 10px;
-  width: 90px;
-  height: 40px;
   border-radius: 160px;
-  background: white;
-  transition: 0.5s;
   box-shadow: inset 0 8px 60px rgba(255, 255, 255, 0.788),
     inset 0 8px 8px rgba(255, 255, 255, 0.788),
     inset 0 -4px 4px rgba(255, 255, 255, 0.788);
+  display: relative;
+  margin-bottom: 10px;
+  margin-left: 82%;
+  margin-top: 10px;
+  height: 40px;
+  background: rgba(232, 219, 243, 0.877);
+  transition: 0.5s;
+  width: 90px;
 }
 
-.indicator {
-  width: 40px;
-  height: 40px;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  background: linear-gradient(
-    to bottom,
-    rgb(252, 246, 246),
-    rgb(223, 199, 199)
-  );
-  transform: scale(0.9);
+#toggle.active .indicator {
+  background: linear-gradient(to bottom, rgb(43, 37, 37), rgb(15, 14, 14));
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 1), inset 0 4px 4px rgb(49, 45, 45),
+    inset 0 -4px 4px rgb(58, 52, 52);
+  margin-left: 55%;
+}
+
+#toggle.active {
+  background-color: rgb(19, 15, 15);
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.05),
     inset 0 4px 4px rgba(155, 134, 134, 0.02),
     inset 0 -4px 4px rgba(255, 255, 255, 0.02);
   transition: 0.5s;
 }
 
-#toggle.active .indicator {
-  margin-left: 55%;
+#main-icon {
+  width: 66px;
+}
+
+#main-icon:hover {
+  cursor: pointer;
+  transition: all 0.5s 0s ease;
+  width: 68px;
+}
+
+#videoback {
+  left: 0;
+  position: fixed;
+  top: 0;
+  z-index: -1;
 }

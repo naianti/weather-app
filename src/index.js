@@ -31,7 +31,7 @@ function displayForecast(response) {
       forecastHTML =
         forecastHTML +
         ` <div class="col">
-    <div class="card-forecast">
+    <div class="card-forecast id="pepe">
       <div class="card-body">
       <div class="forecastdays">${formatForecastDay(forecastDay.dt)}</div>
         <img src="images/${forecastDay.weather[0].icon}.png" alt="..." />
@@ -74,8 +74,8 @@ function getForecast(coordinates) {
 function showTempCity(response) {
   let cityElement = document.querySelector("#city-name");
   let tempElement = document.querySelector("#concurrent-temp");
-  let descriptionElement = document.querySelector("h3");
-  let feelingElement = document.querySelector("#feeling");
+  let descriptionElement = document.querySelector("#description");
+  let feelingElement = document.querySelector("#real-feel");
   let clockElement = document.querySelector("#clock");
   let dayWeekElement = document.querySelector("#concurrent-day");
   let mainIconElement = document.querySelector("#main-icon");
@@ -136,13 +136,36 @@ let localRequest = document.querySelector(".button-location");
 localRequest.addEventListener("click", geolocationRequest);
 
 //darkmode
+let toggle = document.getElementById(`toggle`);
+let toggleActive = false;
 
-let darkMode = document.getElementById(`toggle`);
-let toogle = document.getElementById(`toggle`);
+toggle.addEventListener("click", function () {
+  let background = document.querySelector(`#videoback`);
+  if (toggleActive) {
+    background.innerHTML = `<video src="images/light-mode.mp4" autoplay loop muted></video>`;
+  } else {
+    background.innerHTML = `<video src="images/dark-mode.mp4" autoplay loop muted></video>`;
+  }
+  toggleActive = !toggleActive;
+});
+
+let header = document.querySelector(`h1`);
+let backgroundCard = document.querySelector(`.weather-app`);
+let content = document.querySelector(`body`);
+let cityName = document.getElementById(`city-name`);
+let description = document.getElementById(`description`);
+let cardyCity = document.querySelector(`.card-forecast-city`);
+let cardyTemp = document.querySelector(`.card-forecast-temp`);
+let cardyForecast = document.querySelector(`.card-forecast`);
+
 toggle.onclick = function () {
   toggle.classList.toggle(`active`);
-  darkMode.classList.toggle(`active`);
+  header.classList.toggle(`active`);
+  backgroundCard.classList.toggle(`active`);
+  content.classList.toggle(`active`);
+  cityName.classList.toggle(`active`);
+  description.classList.toggle(`active`);
+  cardyCity.classList.toggle(`active`);
+  cardyTemp.classList.toggle(`active`);
+  cardyForecast.classList.toggle(`active`);
 };
-
-let backgroundDark = document.querySelector(`#videoback.active`);
-backgroundDark.innerHTML = `<video src="images/morning.mp4" autoplay loop muted></video>`;

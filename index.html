@@ -12,6 +12,13 @@
       crossorigin="anonymous"
     />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@800&display=swap"
+      rel="stylesheet"
+    />
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
 
@@ -21,7 +28,9 @@
     </section>
 
     <div class="container">
-      <header>What's the weather in...</header>
+      <header>
+        <h1>What's the weather in...</h1>
+      </header>
       <div class="weather-app">
         <form class="searcher">
           <div class="row">
@@ -47,10 +56,23 @@
           <div class="col-sm-5">
             <div class="card-forecast-city">
               <div class="card-body">
-                <h1 id="city-name"></h1>
-                <p>Latest Report:</p>
-                <span id="concurrent-day"></span>
-                <h5 id="clock"></h5>
+                <h2 id="city-name"></h2>
+                <p>
+                  <img src="images/refresh.png" alt="calendar-icon" /> Latest
+                  report:
+                </p>
+                <span>
+                  <img src="images/calendar.png" alt="calendar-icon" />
+                  <span id="concurrent-day"></span>
+                </span>
+                <div>
+                  <img src="images/stopwatch.png" alt="timer-icon" />
+                  <span id="clock"></span>
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                </div>
               </div>
             </div>
           </div>
@@ -58,19 +80,23 @@
           <div class="col-sm-7">
             <div class="card-forecast-temp">
               <div class="card-body">
-                <span id="concurrent-temp"> </span>
-                °C
+                <div id="now-text">NOW</div>
+                <span id="concurrent-temp"></span>
+                <span id="celcius">°C</span>
                 <img src="#" id="main-icon" />
-                <h3></h3>
-                <h6>Feels like <span id="feeling"></span>° C</h6>
+                <h3 id="description"></h3>
+                <p>Feel like <span id="real-feel"></span> °C</p>
               </div>
             </div>
           </div>
         </div>
+
         <section id="forecast"></section>
 
         <footer>
-          <a href="https://github.com/naianti/weather-app"> Open-source </a>
+          <a href="https://github.com/naianti/weather-app" target="_blank">
+            Open-source
+          </a>
           Code by Nai Antillano
         </footer>
       </div>
