@@ -142,9 +142,9 @@ let toggleActive = false;
 toggle.addEventListener("click", function () {
   let background = document.querySelector(`#videoback`);
   if (toggleActive) {
-    background.innerHTML = `<video src="images/light-mode.mp4" autoplay loop muted></video>`;
+    background.innerHTML = `<video src="images/light.mp4" autoplay loop muted></video>`;
   } else {
-    background.innerHTML = `<video src="images/dark-mode.mp4" autoplay loop muted></video>`;
+    background.innerHTML = `<video src="images/dark.mp4" autoplay loop muted></video>`;
   }
   toggleActive = !toggleActive;
 });
